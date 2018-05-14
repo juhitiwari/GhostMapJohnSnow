@@ -18,3 +18,13 @@ map = folium.Map(location=[51.5132119,-0.13666], tiles='Stamen Toner', zoom_star
 for point in range(0, len(deaths_list)):
     folium.CircleMarker(deaths_list[point], radius=8, color='red', fill=True, fill_color='red', opacity = 0.4).add_to(map)
 map.save("map.html")
+
+pumps=pd.read_csv("pumps.csv")
+
+location_pumps=pumps[['X coordinate','Y coordinate']]
+pumps_list=location_pumps.values.tolist()
+map1 = map
+for point in range(0, len(pumps_list)):
+    folium.Marker(pumps_list[point]).add_to(map1)
+map1
+map1.save("pumps.html")
